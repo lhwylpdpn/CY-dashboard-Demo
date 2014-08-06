@@ -1,0 +1,252 @@
+<!doctype html>
+<html >
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+
+    <link rel="stylesheet" href="css/font-icons/entypo/css/entypo.css" id="style-resource-2">
+    <link rel="stylesheet" href="css/bootstrap-min.css" id="style-resource-4">
+    <link rel="stylesheet" href="css/neon-core-min.css" id="style-resource-5">
+    <link rel="stylesheet" href="css/neon-theme-min.css" id="style-resource-6">
+    <link rel="stylesheet" href="css/neon-forms-min.css" id="style-resource-7">
+    <link rel="stylesheet" href="css/custom-min.css" id="style-resource-8">
+
+  <script type=text/javascript src="js/jquery-1.11.0.min.js"></script>
+  <script type="text/javascript" src="js/jquery-ui/js/jquery-ui-1.10.3.minimal.min.js"></script>
+  <script type="text/javascript" src="js/highcharts.js"></script>
+  <script type="text/javascript" src="js/modules/exporting.js"></script>
+  <script type="text/javascript" src="js/highcharts-more.js"></script>
+  <script type="text/javascript" src="js/dragresize.js"></script>
+  <script type="text/javascript" src="src/3.js"></script>
+  <!--script type="text/javascript" src="src/4.js"></script-->
+  <!--script type="text/javascript" src="src/1.js"></script-->
+<!--script type="text/javascript" src="src/2.js"></script-->
+     <style type="text/css">
+        /* Required CSS classes: must be included in all pages using this script */
+
+        /* Apply the element you want to drag/resize */
+        .drsElement {
+            position: absolute;
+            border: 1px solid #333;
+        }
+
+        /*
+ The main mouse handle that moves the whole element.
+ You can apply to the same tag as drsElement if you want.
+*/
+        .drsMoveHandle {
+            height: 20px;
+            background-color: #CCC;
+            border-bottom: 1px solid #666;
+            cursor: move;
+        }
+
+        /*
+ The DragResize object name is automatically applied to all generated
+ corner resize handles, as well as one of the individual classes below.
+*/
+        .dragresize {
+            position: absolute;
+            width: 5px;
+            height: 5px;
+            font-size: 1px;
+            background: #EEE;
+            border: 1px solid #333;
+        }
+
+        /*
+ Individual corner classes - required for resize support.
+ These are based on the object name plus the handle ID.
+*/
+        .dragresize-tl {
+            top: -8px;
+            left: -8px;
+            cursor: nw-resize;
+        }
+
+        .dragresize-tm {
+            top: -8px;
+            left: 50%;
+            margin-left: -4px;
+            cursor: n-resize;
+        }
+
+        .dragresize-tr {
+            top: -8px;
+            right: -8px;
+            cursor: ne-resize;
+        }
+
+        .dragresize-ml {
+            top: 50%;
+            margin-top: -4px;
+            left: -8px;
+            cursor: w-resize;
+        }
+
+        .dragresize-mr {
+            top: 50%;
+            margin-top: -4px;
+            right: -8px;
+            cursor: e-resize;
+        }
+
+        .dragresize-bl {
+            bottom: -8px;
+            left: -8px;
+            cursor: sw-resize;
+        }
+
+        .dragresize-bm {
+            bottom: -8px;
+            left: 50%;
+            margin-left: -4px;
+            cursor: s-resize;
+        }
+
+        .dragresize-br {
+            bottom: -8px;
+            right: -8px;
+            cursor: se-resize;
+        }
+    </style>
+    
+
+  <script type="text/javascript">
+
+
+Highcharts.theme = {
+    colors: ["#514F78", "#42A07B", "#9B5E4A", "#72727F", "#1F949A", "#82914E", "#86777F", "#42A07B"],
+    chart: {
+        className: 'skies',
+        borderWidth: 0,
+        plotShadow: true,
+        plotBackgroundImage: 'http://www.highcharts.com/demo/gfx/skies.jpg',
+        plotBackgroundColor: {
+            linearGradient: [0, 0, 250, 500],
+            stops: [
+                [0, 'rgba(255, 255, 255, 1)'],
+                [1, 'rgba(255, 255, 255, 0)']
+            ]
+        },
+        plotBorderWidth: 1
+    },
+    title: {
+        style: {
+            color: '#3E576F',
+            font: '16px Lucida Grande, Lucida Sans Unicode, Verdana, Arial, Helvetica, sans-serif'
+        }
+    },
+    subtitle: {
+        style: {
+            color: '#6D869F',
+            font: '12px Lucida Grande, Lucida Sans Unicode, Verdana, Arial, Helvetica, sans-serif'
+        }
+    },
+    xAxis: {
+        gridLineWidth: 0,
+        lineColor: '#C0D0E0',
+        tickColor: '#C0D0E0',
+        labels: {
+            style: {
+                color: '#666',
+                fontWeight: 'bold'
+            }
+        },
+        title: {
+            style: {
+                color: '#666',
+                font: '12px Lucida Grande, Lucida Sans Unicode, Verdana, Arial, Helvetica, sans-serif'
+            }
+        }
+    },
+    yAxis: {
+        alternateGridColor: 'rgba(255, 255, 255, .5)',
+        lineColor: '#C0D0E0',
+        tickColor: '#C0D0E0',
+        tickWidth: 1,
+        labels: {
+            style: {
+                color: '#666',
+                fontWeight: 'bold'
+            }
+        },
+        title: {
+            style: {
+                color: '#666',
+                font: '12px Lucida Grande, Lucida Sans Unicode, Verdana, Arial, Helvetica, sans-serif'
+            }
+        }
+    },
+    legend: {
+        itemStyle: {
+            font: '9pt Trebuchet MS, Verdana, sans-serif',
+            color: '#3E576F'
+        },
+        itemHoverStyle: {
+            color: 'black'
+        },
+        itemHiddenStyle: {
+            color: 'silver'
+        }
+    },
+    labels: {
+        style: {
+            color: '#3E576F'
+        }
+    }
+};
+
+var highchartsOptions = Highcharts.setOptions(Highcharts.theme);
+   
+  </script>
+
+
+</head>
+<body>
+   <div class="dragable drsElement" style="border-style:none; left: 721.25px; top: 168.422px;"><div id="container" style="padding-left:0px;width:0px; height:400px"></div></div>
+     <div class="dragable drsElement" style="border-style:none; left: 121.25px; top: 268.422px;"><div id="container2" style="padding-left:0px;width:0px; height:400px"></div></div>
+    <div class="dragable drsElement" style="border-style:none; left: 1121.25px; top: 8.422px;"><div id="container3" style="padding-left:0px;width:700px; height:600px"></div></div>
+     <div class="dragable drsElement" style="border-style:none; left: 1121.25px; top: 8.422px;"><div id="container4" style="padding-left:0px;width:500px; height:400px"></div></div>
+
+<div class="tile-stats tile-red dragable"><div class="icon"><i class="entypo-clock"></i></div><div class="num" data-start="0" data-end="396" data-prefix="" data-postfix="" data-duration="1500" data-delay="0">396</div><h3>任务数</h3><p>当前版本完成的需求数</p></div>
+
+</body>
+</html>
+
+
+<script>
+
+$(function () {
+    $(".dragable").width(400);
+    
+    
+   
+    var _board_width=0;
+    var _board_height=0;
+    
+    $(".dragable").draggable({
+        stop:function(event,ui){
+            //widgit_height=$(this).height();
+            //widgit_width=$(this).width();
+            _widgit_top=$(this).offset().top;
+            _widgit_left=$(this).offset().left;
+            //alert(widgit_top+";"+widgit_left+";"+content_height+";"+content_width)
+            var url="ajax.Dashboard.php?action=update_location";
+            var $drag_id=$(this).attr("data_drag_id");
+            $.get(url,{"drag_id":$drag_id,"widgit_left":_widgit_left,"widgit_top":_widgit_top,"board_width":_board_width,"board_height":_board_height} , function(data) {
+                
+            });
+        }
+    });
+    $( ".boader-content").droppable({
+        drop:function(event,ui){
+            _board_height=$(this).height();
+            _board_width=$(this).width();
+        }
+    });
+    
+})
+
+</script>
+        
