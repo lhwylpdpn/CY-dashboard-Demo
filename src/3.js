@@ -2,7 +2,11 @@ $(function () {
     
     var colors = Highcharts.getOptions().colors,
         categories = ['closed', 'fixed', 'new', 'reopen'],
+<<<<<<< HEAD
         name = '本周发现缺陷分布',
+=======
+        name = '缺陷分布',
+>>>>>>> origin/master
         data = [{
                 y: 52,
                 color: colors[1],
@@ -72,7 +76,11 @@ $(function () {
             type: 'pie'
         },
         title: {
+<<<<<<< HEAD
             text: '本周发现缺陷分布'
+=======
+            text: '缺陷分布'
+>>>>>>> origin/master
         },
         yAxis: {
             title: {

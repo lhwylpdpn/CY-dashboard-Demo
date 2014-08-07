@@ -18,7 +18,11 @@ $(function () {
         yAxis: {                                                           
             min: 0,                                                        
             title: {                                                       
+<<<<<<< HEAD
                 text: 'by 周晓菲',                             
+=======
+                text: 'by 邦之恺',                             
+>>>>>>> origin/master
                 align: 'high'                                              
             },                                                             
             labels: {                                                      
